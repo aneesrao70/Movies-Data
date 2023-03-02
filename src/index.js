@@ -1,17 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import Header from './Header';
+import Movies from './Movies';
+import moviesData from './moviesData.json'
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Header />
+    <div className='boxes'>
+    {
+      moviesData.map((elem)=>{
+        return(
+          <Movies 
+          name = {elem.Title}
+          year = {elem.Year}
+          imdb = {elem.imdbID }
+          img = {elem.Poster}
+          />
+        )
+      })
+    }
+    </div>
+    
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
